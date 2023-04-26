@@ -3,9 +3,19 @@
     "scope": "adriendubostisitech", 
     "public": false,
     "builds": [
-      { "src": "./**", "use": "@now/static" }
+      {
+        "src": "vite.config.ts",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "build/index.html",
+        "use": "@vercel/static"
+      }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "public/$1" }
+      {
+        "src": "/(.*)",
+        "dest": "vite.config.ts"
+      }
     ]
   }

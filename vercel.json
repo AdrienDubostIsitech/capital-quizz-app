@@ -1,21 +1,5 @@
 {
     "version": 2,
     "scope": "adriendubostisitech", 
-    "public": false,
-    "builds": [
-      {
-        "src": "vite.config.ts",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "build/index.html",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "vite.config.ts"
-      }
-    ]
+    "public": false
   }

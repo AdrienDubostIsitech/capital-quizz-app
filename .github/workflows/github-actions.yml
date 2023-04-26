@@ -18,7 +18,7 @@ jobs:
       - name: Use Node.js 16.x and install pnpm and npx
         uses: actions/setup-node@v2
         with:
-          node-version: 16.x
+          node-version: 16.15.1
       - uses: pnpm/action-setup@v2
         with:
           version: 6.0.2

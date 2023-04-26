@@ -2,9 +2,6 @@
     "version": 2,
     "scope": "adriendubostisitech", 
     "public": false,
-    "github": {
-      "enabled": false
-    },
     "builds": [
       { "src": "./public/**", "use": "@now/static" }
     ],

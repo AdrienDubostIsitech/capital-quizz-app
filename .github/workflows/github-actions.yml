@@ -26,11 +26,10 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
             - args: [--global, gulp, prettier, typescript]
-      - uses: ng-easy/npm-install@v2
       - name: Install dependencies
         run: pnpm install
       - name: Install npx
-        run: npm install -g npx
+        run: pnpm install -g npx
       - name: Build App 
         run: pnpm run build --if-present
       - uses: actions/checkout@v2

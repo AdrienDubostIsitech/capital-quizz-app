@@ -29,7 +29,8 @@ jobs:
       - uses: ng-easy/npm-install@v2
       - name: Install dependencies
         run: pnpm install
-        run: pnpm install -g npx
+      - name: Install npx
+        run: npm install -g npx
       - name: Build App 
         run: pnpm run build --if-present
       - uses: actions/checkout@v2

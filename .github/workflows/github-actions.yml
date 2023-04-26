@@ -31,7 +31,8 @@ jobs:
       - name: Build App 
         run: pnpm run build --if-present
       - uses: actions/checkout@v2
-      - uses: ngduc/vercel-deploy-action@master
+      - name: Deploy on Vercel
+        uses: ngduc/vercel-deploy-action@master
         with:
           vercel-cli: vercel # optional ("vercel" or "now")
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required

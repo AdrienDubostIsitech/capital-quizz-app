@@ -34,7 +34,6 @@ jobs:
         run: pnpm run build --if-present
       - uses: actions/checkout@v2
       - run: cd /opt/hostedtoolcache/node/16.15.1/x64/bin
-      - run: ll
       - run: ls
       - name: Deploy on Vercel
         uses: ngduc/vercel-deploy-action@master

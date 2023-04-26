@@ -3,7 +3,7 @@
     "scope": "adriendubostisitech", 
     "public": false,
     "builds": [
-      { "src": "./public/**", "use": "@now/static" }
+      { "src": "./**", "use": "@now/static" }
     ],
     "routes": [
       { "src": "/(.*)", "dest": "public/$1" }

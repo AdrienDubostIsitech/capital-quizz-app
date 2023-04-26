@@ -15,7 +15,7 @@ jobs:
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - uses: actions/checkout@v3
-      - name: Use Node.js 16.x
+      - name: Use Node.js 16.x and install pnpm and npx
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
@@ -26,8 +26,10 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
             - args: [--global, gulp, prettier, typescript]
+      - uses: ng-easy/npm-install@v2
       - name: Install dependencies
         run: pnpm install
+        run: npm install -g npx
       - name: Build App 
         run: pnpm run build --if-present
       - uses: actions/checkout@v2

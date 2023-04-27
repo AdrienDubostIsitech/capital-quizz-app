@@ -21,6 +21,7 @@ specifiers:
   jsdom: ^21.1.1
   matchers: link:@testing-library/jest-dom/matchers
   mocha: ^10.2.0
+  npx: ^10.2.2
   postcss: ^8.4.23
   react: ^18.2.0
   react-dom: ^18.2.0

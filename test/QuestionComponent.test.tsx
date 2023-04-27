@@ -5,7 +5,7 @@ import React from "react";
 
 
 
-describe("Counter", () => {
+describe("Country", () => {
   test("return the name of the country in props", () => {
     const testvalue = "JeSuisUnPays"; 
     render(<QuestionComponent name={testvalue}/>); 

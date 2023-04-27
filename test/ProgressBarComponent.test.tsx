@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react'
 import { expect } from 'chai';
 import React from 'react';
 
-describe('reverse', () => {
-  test("return array with reversed string if array contains multiple elements", () => {
+describe('test progress', () => {
+  test("test the number of question and the current question", () => {
     const testNbQuestion = 10;
     const testCurrentQuestion = 2
     const testProgress = 20

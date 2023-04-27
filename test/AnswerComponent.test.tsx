@@ -2,9 +2,8 @@ import { AnswerComponent } from '../src/components/AnswerComponents'
 import { render, screen } from '@testing-library/react'
 import React from 'react';
 
-describe('reverse', () => {
-
-  test("return array with reversed string if array contains multiple elements", () => {
+describe('test array answers', () => {
+  test("if array contains 4 elements", () => {
     const testvalues = ["test1", "test2", "test3", "test4"];
     render(<AnswerComponent answer={testvalues} onSelect={(answer: string) => undefined} />);
     const value1 = screen.getByText(testvalues[0]);

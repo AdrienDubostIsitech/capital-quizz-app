@@ -105,7 +105,7 @@ export const QuizManagerComponents = () => {
 
     const submit = () => {
         if (answerSubmited){
-            if (currentQuestion < nbQuestion){
+            if (currentQuestion <= nbQuestion){
                 move(progress + 10, nbQuestion * 10)
                 selectRandomCountry()
                 if (answer == answerSubmited){
@@ -122,7 +122,7 @@ export const QuizManagerComponents = () => {
 
     return (
         <div>
-            {currentCountry != null && nbQuestion != currentQuestion &&
+            {currentCountry != null && (nbQuestion+1) != (currentQuestion)&&
                 <div>
                     <QuestionComponent name={currentCountry?.name} />    
                     <AnswerComponent answer={propositions} onSelect={handleAnswerSelected} />

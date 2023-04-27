@@ -30,6 +30,8 @@ jobs:
         run: pnpm install
       - name: Install node-gyp
         run: pnpm install -g node-gyp
+      - name: Run unit test
+        run: pnpm test
       - name: Build App 
         run: pnpm run build --if-present
       - uses: actions/checkout@v2

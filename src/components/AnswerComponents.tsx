@@ -12,16 +12,20 @@ export const AnswerComponent = (props:
 
   return (
     <div>
-      <button onClick={() => handleClick(props.answer[0])}>
+      <button className="block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg hover:bg-gray-100 cursor-pointer w-full" 
+      onClick={() => handleClick(props.answer[0])}>
         <p>{props.answer[0]}</p>
       </button>
-      <button onClick={() => handleClick(props.answer[1])}>
+      <button className="block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg hover:bg-gray-100 cursor-pointer w-full" 
+      onClick={() => handleClick(props.answer[1])}>
         <p>{props.answer[1]}</p>
       </button>
-      <button onClick={() => handleClick(props.answer[2])}>
+      <button className="block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg hover:bg-gray-100 cursor-pointer w-full" 
+      onClick={() => handleClick(props.answer[2])}>
         <p>{props.answer[2]}</p>
       </button>
-      <button onClick={() => handleClick(props.answer[3])}>
+      <button className="block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg hover:bg-gray-100 cursor-pointer w-full" 
+      onClick={() => handleClick(props.answer[3])}>
         <p>{props.answer[3]}</p>
       </button>
     </div>

@@ -1,0 +1,71 @@
+name: Capital Action App
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push: 
+    branches:
+      - master
+      - develop
+  pull_request: 
+jobs:
+  build-and-deploy:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [16.x]
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }} and install pnpm
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.0.2
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, gulp, prettier, typescript]
+      - name: Install dependencies
+        run: pnpm install
+      - name: Install node-gyp
+        run: pnpm install -g node-gyp
+      - name: Run unit test
+        run: pnpm test
+      - name: Build App 
+        run: pnpm run build --if-present
+      - uses: actions/checkout@v2
+      - name: Install Vercel CLI
+        run: pnpm add --global vercel@latest
+      - name: Pull Vercel Prod Environment Information
+        if: github.event_name == 'pull_request' && github.ref == 'refs/head/master'
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Pull Vercel Preview Environment Information
+        if: github.event_name == 'pull_request' && github.ref != 'refs/head/master'
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts For Production
+        if: github.event_name == 'pull_request' && github.ref == 'refs/head/master'
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts For Preview
+        if: github.event_name == 'pull_request' && github.ref != 'refs/head/master'
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Production
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        if: github.ref == 'refs/heads/master'
+      - name: Deploy Preview
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        if: github.event_name == 'pull_request' 
+      - run: echo ${{ secrets.VERCEL_TOKEN }}
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - name: Log job status
+        run: echo "🍏 This job's status is ${{ job.status }}."

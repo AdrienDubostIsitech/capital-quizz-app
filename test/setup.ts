@@ -8,3 +8,5 @@ expect.extend(matchers);
 // setup worker test
 
 //
+
+//tester si le pays est non null et si l'array est bien de 4

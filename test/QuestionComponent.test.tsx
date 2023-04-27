@@ -1,9 +1,10 @@
-import { it, describe, expect, assert, vi } from "vitest";
+import { it, describe, expect, assert, vi} from "vitest";
 import { setup } from "./utils";
-import { Counter } from "../src/Counter";
+import { QuestionComponent } from "../src/components/QuestionComponent";
 import ReactDOM from "react-dom/client";
 import { act } from "@testing-library/react";
 import React from "react";
+
 
 
 describe("Counter", () => {
@@ -12,11 +13,10 @@ describe("Counter", () => {
     const container = document.createElement("div");
     document.body.append(container);
 
-
     act(() => {
 
       const root = ReactDOM.createRoot(container);
-      root.render(<Counter />);
+      root.render(<QuestionComponent name="France"/>);
     });
 
     console.log(document.body.innerHTML);

@@ -126,7 +126,7 @@ export const QuizManagerComponents = () => {
                 <div>
                     <QuestionComponent name={currentCountry?.name} />    
                     <AnswerComponent answer={propositions} onSelect={handleAnswerSelected} />
-                    <button onClick={() => submit()}>Valider</button>
+                    <button className="bg-indigo-600 text-white text-sm font-bold tracking-wide rounded-full px-5 py-2 m-4" onClick={() => submit()}>Valider</button>
                     <ProgressBarComponent nbQuestion={nbQuestion} currentQuestion={currentQuestion} progress={progress}/>
                 </div>
             }
